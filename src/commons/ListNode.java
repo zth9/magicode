@@ -1,4 +1,4 @@
-package 链表.leet_2_两数相加;
+package commons;
 
 /**
  * 链表节点
@@ -6,9 +6,9 @@ package 链表.leet_2_两数相加;
  * @date: 2020/9/27 20:12
  */
 public class ListNode {
-    int val;
-    ListNode next;
-    ListNode(int x){
+    public int val;
+    public ListNode next;
+    public ListNode(int x){
         val = x;
     }
 }

@@ -1,57 +1,44 @@
 package 数组.leet_912_排序数组.快速排序;
 
+import java.util.Arrays;
+
 /**
  * @author: theTian
  * @date: 2020/10/1 20:47
  */
 public class Solution {
+    /**
+     * 对nums进行快速排序
+     * 快排是不稳定原地排序
+     * @param nums
+     * @return
+     */
     public int[] sortArray(int[] nums) {
         quickSort(nums, 0, nums.length - 1);
         return nums;
     }
 
-    /**
-     * 递归分区
-     * @param arr
-     * @param p
-     * @param r
-     */
-    private static void quickSort(int[] arr, int p, int r) {
-        if (p >= r){
+    private void quickSort(int[] nums, int p, int r) {
+        if (p>=r){
             return;
         }
-        int q = partition(arr, p , r);
-        quickSort(arr, p, q-1);
-        quickSort(arr, q+1, r);
+        int q = partition(nums, p, r);
+        quickSort(nums, p, q-1);
+        quickSort(nums, q+1, r);
     }
 
-    /**
-     * 将最后一个元素作为中间值 前后分区
-     * @param arr
-     * @param p
-     * @param r
-     * @return
-     */
-    private static int partition(int[] arr, int p, int r) {
-        int cursor = r;
-        boolean findBig = false;
-        for (int i = 0; i < r; i++) {
-            if (arr[i] > arr[r] && !findBig){
-                cursor = i;
-                findBig = true;
-            }
-            if (arr[i] < arr[r] && findBig){
-                int tmp = arr[i];
-                arr[i] = arr[cursor];
-                arr[cursor] = tmp;
-                cursor++;
+    private int partition(int[] nums, int p, int r) {
+        int pivot = nums[r];
+        int bigIndex = p;
+        for (int i = p; i < r; i++) {
+            if (nums[i] < pivot){
+                int tmp = nums[i];
+                nums[i] = nums[bigIndex];
+                nums[bigIndex++] = tmp;
             }
         }
-        if (cursor != r){
-            int tmp = arr[r];
-            arr[r] = arr[cursor];
-            arr[cursor] = tmp;
-        }
-        return cursor;
+        nums[r] = nums[bigIndex];
+        nums[bigIndex] = pivot;
+        return bigIndex;
     }
 }

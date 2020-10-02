@@ -9,6 +9,7 @@ import java.util.Arrays;
 public class Solution {
     /**
      * 选择排序 相较于交换排序 减少了大量的交换操作
+     * 不稳定排序
      * @param nums
      * @return
      */

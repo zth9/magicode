@@ -9,6 +9,7 @@ import java.util.Arrays;
 public class Solution {
     /**
      * 插入排序
+     *
      * @param nums
      * @return
      */
@@ -19,20 +20,15 @@ public class Solution {
         }
         for (int i = 1; i < length; i++) {
             int curNum = nums[i];
-            int targetIndex = i;
-            for (int j = i - 1; j >= 0; j--) {
+            int j = i - 1;
+            for (; j >= 0; j--) {
                 if (curNum < nums[j]) {
-                    targetIndex = j;
+                    nums[j + 1] = nums[j];
                 } else {
                     break;
                 }
             }
-            if (targetIndex != i) {
-                for (int j = i; j > targetIndex ; j--) {
-                    nums[j] = nums[j-1];
-                }
-                nums[targetIndex] = curNum;
-            }
+            nums[j + 1] = curNum;
         }
         return nums;
     }

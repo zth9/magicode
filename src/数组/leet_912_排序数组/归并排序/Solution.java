@@ -7,7 +7,7 @@ package 数组.leet_912_排序数组.归并排序;
 public class Solution {
     /**
      * 对数组nums进行归并排序
-     *
+     * 稳定排序 但不是原地排序
      * @param nums
      * @return
      */

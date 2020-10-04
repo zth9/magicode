@@ -1,7 +1,5 @@
 package 数组.leet_912_排序数组.快速排序;
 
-import java.util.Arrays;
-
 /**
  * @author: theTian
  * @date: 2020/10/1 20:47

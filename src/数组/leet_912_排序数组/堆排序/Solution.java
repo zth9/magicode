@@ -4,6 +4,12 @@ package 数组.leet_912_排序数组.堆排序;
  * @date: 2020/10/8 20:09
  */
 public class Solution {
+    /**
+     * 对nums进行堆排序
+     * 堆排是不稳定原地排序
+     * @param nums
+     * @return
+     */
     public int[] sortArray(int[] nums) {
         int length = nums.length;
         if (length<2) return nums;

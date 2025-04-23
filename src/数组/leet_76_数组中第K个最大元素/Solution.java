@@ -1,28 +1,26 @@
-package 数组.leet_912_排序数组.快速排序;
-
-import java.util.Arrays;
+package 数组.leet_76_数组中第K个最大元素;
 
 /**
+ *
  * @author tian
  * @date 2025-04-03
  */
 public class Solution {
-    /**
-     * 对nums进行快速排序
-     * 快排是不稳定原地排序
-     * @param nums
-     * @return
-     */
-    public int[] sortArray(int[] nums) {
-        quickSort(nums, 0, nums.length - 1);
-        return nums;
+
+    public int findKthLargest(int[] nums, int k) {
+        return quickSort(nums, 0, nums.length - 1, k);
     }
 
-    private void quickSort(int[] nums, int begin, int end) {
-        if (begin >= end) return;
+    private int quickSort(int[] nums, int begin, int end, int k) {
         int p = partition(nums, begin, end);
-        quickSort(nums, begin, p - 1);
-        quickSort(nums, p + 1, end);
+        if (p == nums.length - k) {
+            return nums[p];
+        }
+        if (p > (nums.length - k)) {
+            return quickSort(nums, begin, p - 1, k);
+        } else {
+            return quickSort(nums, p + 1, end, k);
+        }
     }
 
     private int partition(int[] nums, int begin, int end) {
@@ -43,6 +41,6 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(new Solution().sortArray(new int[] {1,3,2,4,9,8,7,6,-1, -3, -2, 100 ,22, 66, 33,77, 88,55,54,56})));
+        System.out.println(new Solution().findKthLargest(new int[] {1,3,2,4,9,8,7,6}, 9));
     }
 }

@@ -1,4 +1,4 @@
-package 递归.leet_70_爬楼梯;
+package 动规.leet_70_爬楼梯;
 
 import java.util.HashMap;
 

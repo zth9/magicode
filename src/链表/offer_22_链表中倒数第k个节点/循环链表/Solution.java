@@ -1,6 +1,5 @@
 package 链表.offer_22_链表中倒数第k个节点.循环链表;
 
-import com.sun.org.apache.bcel.internal.generic.LUSHR;
 import commons.ListNode;
 
 /**

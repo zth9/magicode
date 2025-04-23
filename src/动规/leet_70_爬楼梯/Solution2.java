@@ -1,4 +1,4 @@
-package 递归.leet_70_爬楼梯;
+package 动规.leet_70_爬楼梯;
 
 import java.util.HashMap;
 
@@ -6,7 +6,7 @@ import java.util.HashMap;
  * @author: theTian
  * @date: 2020/9/30 14:11
  */
-public class Solution {
+public class Solution2 {
     /**
      * 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。
      * 每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？

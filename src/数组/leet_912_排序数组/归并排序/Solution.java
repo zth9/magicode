@@ -1,5 +1,7 @@
 package 数组.leet_912_排序数组.归并排序;
 
+import java.util.Arrays;
+
 /**
  * @author: theTian
  * @date: 2020/9/30 16:48
@@ -15,48 +17,32 @@ public class Solution {
         return merge(nums, 0, nums.length - 1);
     }
 
-    /**
-     * 将数组分半 递归合并
-     *
-     * @param nums
-     * @param p
-     * @param q
-     * @return
-     */
-    private int[] merge(int[] nums, int p, int q) {
-        if (p >= q) {
-            return new int[]{nums[p]};
+    private int[] merge(int[] nums, int begin, int end) {
+        int p = (end - begin) / 2 + begin;
+        if (end == begin) {
+            return new int[] {nums[begin]};
         }
-        int[] arr1 = merge(nums, p, (p + q) / 2);
-        int[] arr2 = merge(nums, (p + q) / 2 + 1, q);
-        return mergeArray(arr1, arr2);
+        return merge(merge(nums, begin, p), merge(nums, p + 1, end));
     }
 
-    /**
-     * 合并两个有序数组
-     *
-     * @param arr1
-     * @param arr2
-     * @return
-     */
-    private int[] mergeArray(int[] arr1, int[] arr2) {
-        int n = arr1.length + arr2.length;
-        int p = 0;
-        int q = 0;
-        int[] res = new int[n];
-        for (int i = 0; i < n; i++) {
-            if (arr1.length == p) {
-                res[i] = arr2[q++];
-            } else if (arr2.length == q) {
-                res[i] = arr1[p++];
+    private int[] merge(int[] a, int[] b) {
+        int[] res = new int[a.length + b.length];
+        int p = 0, q = 0;
+        for (int i = 0; i < res.length; i++) {
+            if (p == a.length) {
+                res[i] = b[q++];
+            } else if (q == b.length) {
+                res[i] = a[p++];
+            } else if (a[p] <= b[q]) {
+                res[i] = a[p++];
             } else {
-                if (arr1[p] < arr2[q]) {
-                    res[i] = arr1[p++];
-                } else {
-                    res[i] = arr2[q++];
-                }
+                res[i] = b[q++];
             }
         }
         return res;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(Arrays.toString(new Solution().sortArray(new int[] {1,3,2,4,9,8,7,6})));
     }
 }
